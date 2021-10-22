@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+}
+
+html, 
+body {
+  --black: hsl(240, 6%, 13%);
+  --gray: hsl(240, 9%, 89%); /*h: cor - s: saturação - l: iluminação */
+
+
+  height: 100%;
+  font-family: 'Roboto', sans-serif; /* Se não achar a fonte Roboto, será utilizado o sans-serif, que retira os pequenos traços das linhas */
+  -webkit-font-smoothing: antialiased; /* Faz com que a propriedade font-smoothing funcione em navegadores webkit, para suavizar a fonte */
+}
+
+body {
+  display: grid;
+  place-items: center; /* só funciona com o grid, que permite que trabalhemos com layouts, como boxes*/
+}
+
+main{
+  background: url(images/background.svg);
+  width: 375px;
+  height: 812px;
+}
+
+.container{
+  max-width: 250px;
+  margin: auto;
+  text-align: center;
+  color: var(--gray);
+}
+
+.avatar{
+  width: 10rem;
+  margin: 11.5rem auto 0;  /* top - right - left - bottom*/
+  position: relative;
+}
+
+.avatar span{
+  position: absolute; /* Permite a criação de empilhamento, mas fica absoluto na pagina inteira, não da imagem como queremos, por isso a classe avatar irá receber um position: relative, fazendo com que agora sim, a .avatar seja o "ponto de partida" */
+  top: -15px;
+
+  z-index: 1; /* Após reformular a imagem como poligono, a imagem do selo se perde no eixo z e fica no fundo, assim utilizaremos isso*/
+}
+
+.avatar > img { /* utilizamos o " > img" para se referir a imagem do 1º nível, o img, se fossemos querer a outra, usaríamos o "> span > img" */
+  width: 10rem;
+  height: 11.5rem;
+  object-fit: cover; /* utilizado para que a imagem se adapte no espaço desejado, cobrindo a área estabelecida */
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--gray);
+  text-decoration: none;
+  margin-top: 0.25rem;
+
+  display: flex;
+  gap: 0.75rem;
+
+  justify-content: center;
+  align-items: center; /* para certificar que está tudo centralizado vertical e horizontalmente */
+}
+      
+p{
+  margin-top: 2rem;
+}
+
+ul{
+  margin-top: 4rem;
+
+  list-style: none; /* retirar os marcadores (bolinhas)*/
+  padding: 0; /* retirar o preenchimento interno */
+
+  display: flex; /* faz com que os elementos fiquem ao lado do outro no eixo vertical*/
+  gap: 0.5rem; /*espaçamento no flex*/
+  justify-content: center;
+
+  /* text-align: serve para textos ou elementos que recebem essas propriedades, justify-content faz com que os outros elementos fiquem */
+}
